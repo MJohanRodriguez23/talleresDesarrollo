@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseño Web</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Calculadora Académica y Operaciones</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
- <!-- Menú de Navegación -->
+
+  <!-- Menú de Navegación -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="https://www.incolmotos-yamaha.com.co/wp-content/themes/yamaha/img/yamaha.svg" alt=""></a>
+      <a class="navbar-brand" href="#"><img src="https://www.zarla.com/images/zarla-zona-escolar-1x1-2400x2400-20231128-ddgctvy6v73w4gf78yqf.png?crop=1:1,smart&width=250&dpr=2" style="height: 150px; width: 150px;" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,89 +38,148 @@
       </div>
     </div>
   </nav>
-  
-  <!-- motos deportivas -->
+
+  <!-- Carousel -->
+  <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://science-teaching.org/wp-content/uploads/2022/12/stem-banner-que-es-educacion-stem.jpg" style="height: 500px; width: 2800px;" class="d-block w-50 m-auto" alt="Imagen 1" >
+      </div>
+      <div class="carousel-item">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9UwopTJl3lFqWWZsIHP394PcH3FgwZY6FGQ&s" style="height: 500px; width: 2800px;" class="d-block w-50 m-auto" alt="Imagen 3"> 
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.ceupe.co/images/easyblog_articles/156/educacion.png" class="d-block w-50 m-auto" style="height: 500px; width: 2800px;" alt="Imagen 2"> 
+    </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Acordeón con funcionalidades -->
   <div class="container mt-4">
-    <h2>Motos Deportivas</h2>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card p-3">
-          <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2018/03/Mt09_2024_gris.jpg" class="card-img-top" alt="Noticia 1">
-          <div class="card-body">
-            <h5 class="card-title">Yamaha MT09 gris</h5>
-            <p class="card-text">$57´500.000</p>
-            <a href="#" class="btn btn-primary">Más info</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3">
-          <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2023/05/Mt10_darkgray.png" class="card-img-top" alt="Noticia 2">
-          <div class="card-body">
-            <h5 class="card-title">Yamaha MT10 Darkgray</h5>
-            <p class="card-text">$80´000.000</p>
-            <a href="#" class="btn btn-primary">Más info</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card p-3">
-          <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2022/04/Mt09_2025_SP.jpg" class="card-img-top" alt="Noticia 3">
-          <div class="card-body">
-            <h5 class="card-title"> Yamaha MT09 SP</h5>
-            <p class="card-text">$65´000.000</p>
-            <a href="#" class="btn btn-primary">Más info</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="accordion" id="accordionExample">
 
-  <!-- Mas modelos -->
-<div class="container mt-4">
-    <h2 class="text-center">Mas modelos</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-3 d-flex justify-content-center">
-        <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2018/03/crypton-fi.jpg" class="img-fluid" alt="Evento 1">
+      <!-- Calculadora Académica -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingAcademic">
+          <button class="accordion-button bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcademic" aria-expanded="true" aria-controls="collapseAcademic">
+            Calculadora Académica
+          </button>
+        </h2>
+        <div id="collapseAcademic" class="accordion-collapse collapse show" aria-labelledby="headingAcademic" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form id="formAcad">
+              <div class="mb-3">
+                <label for="nota1" class="form-label">Nota 1:</label>
+                <input type="number" class="form-control" id="nota1" step="0.1" min="0" max="5.0">
+              </div>
+              <div class="mb-3">
+                <label for="nota2" class="form-label">Nota 2:</label>
+                <input type="number" class="form-control" id="nota2" step="0.1" min="0" max="5.0">
+              </div>
+              <div class="mb-3">
+                <label for="nota3" class="form-label">Nota 3:</label>
+                <input type="number" class="form-control" id="nota3" step="0.1" min="0" max="5.0">
+              </div>
+              <div class="mb-3">
+                <label for="examen30" class="form-label">Examen Final (30%):</label>
+                <input type="number" class="form-control" id="examen30" step="0.1" min="0" max="5.0">
+              </div>
+              <button type="button" class="btn btn-dark" onclick="calcularNota()">Calcular Nota Final</button>
+              <p id="resultadoNota"></p>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="col-md-3 d-flex justify-content-center">
-        <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2018/03/xtz250_white_mini2.jpg" class="img-fluid" alt="Evento 2">
-      </div>
-      <div class="col-md-3 d-flex justify-content-center">
-        <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2024/02/Fz15v3_2024_mini.png" class="img-fluid" alt="Evento 3">
-      </div>
-      <div class="col-md-3 d-flex justify-content-center">
-        <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2021/03/nmax_nuevos_colores_thumb.png" class="img-fluid" alt="Evento 4">
-      </div>
-    </div>
-  </div>
-  
 
-  <!-- Repuestos -->
-<div class="container mt-4 mb-4">
-    <h2 class="text-center mb-3">Repuestos</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/166143-300-300?v=638103361281200000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 1">
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/166147-300-300?v=638103371481630000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 2">
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/156477-300-300?v=637783843686770000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 3">
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/182555-300-300?v=638485515553830000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 4">
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/165990-300-300?v=638030157455730000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 5">
-      </div>
-      <div class="col-md-2 d-flex justify-content-center">
-        <img src="https://yamaha.vtexassets.com/arquivos/ids/179685-300-300?v=638320510450970000&width=300&height=300&aspect=true" class="rounded-circle img-fluid" alt="Avatar 5">
+      <!-- Otras operaciones (Suma, Resta, Multiplicación, División) -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOperations">
+          <button class="accordion-button collapsed bg-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOperations" aria-expanded="false" aria-controls="collapseOperations">
+            Operaciones Matemáticas
+          </button>
+        </h2>
+        <div id="collapseOperations" class="accordion-collapse collapse" aria-labelledby="headingOperations" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- Botones uno al lado del otro -->
+            <div class="d-flex justify-content-between mb-3">
+              <button type="button" class="btn btn-outline-dark" onclick="mostrarFormSuma()">Suma</button>
+              <button type="button" class="btn btn-outline-dark" onclick="mostrarFormResta()">Resta</button>
+              <button type="button" class="btn btn-outline-dark" onclick="mostrarFormMult()">Multiplicar</button>
+              <button type="button" class="btn btn-outline-dark" onclick="mostrarFormDiv()">División</button>
+            </div>
+            <!-- Formularios escondidos para las operaciones matemáticas -->
+            <div id="formulariosOperaciones">
+              <form id="formSum" style="display:none;">
+                <div class="mb-3">
+                  <label for="num1" class="form-label">Número 1:</label>
+                  <input type="number" class="form-control" id="num1">
+                </div>
+                <div class="mb-3">
+                  <label for="num2" class="form-label">Número 2:</label>
+                  <input type="number" class="form-control" id="num2">
+                </div>
+                <button type="button" class="btn btn-dark" onclick="sumar()">Sumar</button>
+                <p id="resultadoSuma"></p>
+              </form>
+              <form id="formRest" style="display:none;">
+                <div class="mb-3">
+                  <label for="edad1" class="form-label">Edad 1:</label>
+                  <input type="number" class="form-control" id="edad1">
+                </div>
+                <div class="mb-3">
+                  <label for="edad2" class="form-label">Edad 2:</label>
+                  <input type="number" class="form-control" id="edad2">
+                </div>
+                <div class="mb-3">
+                  <label for="edad3" class="form-label">Edad 3:</label>
+                  <input type="number" class="form-control" id="edad3">
+                </div>
+                <button type="button" class="btn btn-dark" onclick="restar()">Restar Edades</button>
+                <p id="resultadoResta"></p>
+              </form>
+              <form id="formMult" style="display:none;">
+                <div class="mb-3">
+                  <label for="num3" class="form-label">Número Par 1:</label>
+                  <input type="number" class="form-control" id="num3">
+                </div>
+                <div class="mb-3">
+                  <label for="num4" class="form-label">Número Par 2:</label>
+                  <input type="number" class="form-control" id="num4">
+                </div>
+                <button type="button" class="btn btn-dark" onclick="multiplicar()">Multiplicar</button>
+                <p id="resultadoMult"></p>
+              </form>
+              <form id="formDiv" style="display:none;">
+                <div class="mb-3">
+                  <label for="num5" class="form-label">Número impar 1:</label>
+                  <input type="number" class="form-control" id="num5">
+                </div>
+                <div class="mb-3">
+                  <label for="num6" class="form-label">Número impar 2:</label>
+                  <input type="number" class="form-control" id="num6">
+                </div>
+                <button type="button" class="btn btn-dark" onclick="dividir()">Dividir</button>
+                <p id="resultadoDiv"></p>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
 
   <!-- Footer -->
 <footer class="bg-dark text-light py-4">
@@ -157,5 +218,87 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  <!-- Script -->
+  <script>
+    // Función para calcular la nota final
+    function calcularNota() {
+      const nota1 = parseFloat(document.getElementById('nota1').value) || 0;
+      const nota2 = parseFloat(document.getElementById('nota2').value) || 0;
+      const nota3 = parseFloat(document.getElementById('nota3').value) || 0;
+      const examen30 = parseFloat(document.getElementById('examen30').value) || 0;
+
+      const promedio70 = (nota1 + nota2 + nota3) / 3;
+      const notaFinal = (promedio70 * 0.7) + (examen30 * 0.3);
+
+      document.getElementById('resultadoNota').textContent = 'Tu nota final es: ' + notaFinal.toFixed(2);
+    }
+
+    // Función para mostrar y ocultar los formularios según la operación
+    function mostrarFormSuma() {
+      document.getElementById('formSum').style.display = 'block';
+      document.getElementById('formRest').style.display = 'none';
+      document.getElementById('formMult').style.display = 'none';
+      document.getElementById('formDiv').style.display = 'none';
+    }
+
+    function mostrarFormResta() {
+      document.getElementById('formSum').style.display = 'none';
+      document.getElementById('formRest').style.display = 'block';
+      document.getElementById('formMult').style.display = 'none';
+      document.getElementById('formDiv').style.display = 'none';
+    }
+
+    function mostrarFormMult() {
+      document.getElementById('formSum').style.display = 'none';
+      document.getElementById('formRest').style.display = 'none';
+      document.getElementById('formMult').style.display = 'block';
+      document.getElementById('formDiv').style.display = 'none';
+    }
+
+    function mostrarFormDiv() {
+      document.getElementById('formSum').style.display = 'none';
+      document.getElementById('formRest').style.display = 'none';
+      document.getElementById('formMult').style.display = 'none';
+      document.getElementById('formDiv').style.display = 'block';
+    }
+
+    // Funciones de las operaciones matemáticas
+    function sumar() {
+      const num1 = parseFloat(document.getElementById('num1').value) || 0;
+      const num2 = parseFloat(document.getElementById('num2').value) || 0;
+      const suma = num1 + num2;
+      document.getElementById('resultadoSuma').textContent = 'Resultado: ' + suma;
+    }
+
+    function restar() {
+      const edad1 = parseFloat(document.getElementById('edad1').value) || 0;
+      const edad2 = parseFloat(document.getElementById('edad2').value) || 0;
+      const edad3 = parseFloat(document.getElementById('edad3').value) || 0;
+      const resta = edad1 - edad2 - edad3;
+      document.getElementById('resultadoResta').textContent = 'Resultado: ' + resta;
+    }
+
+    function multiplicar() {
+      const num3 = parseFloat(document.getElementById('num3').value) || 0;
+      const num4 = parseFloat(document.getElementById('num4').value) || 0;
+      const mult = num3 * num4;
+      document.getElementById('resultadoMult').textContent = 'Resultado: ' + mult;
+    }
+
+    function dividir() {
+      const num5 = parseFloat(document.getElementById('num5').value) || 1;
+      const num6 = parseFloat(document.getElementById('num6').value) || 1;
+      const div = num5 / num6;
+      document.getElementById('resultadoDiv').textContent = 'Resultado: ' + div.toFixed(2);
+    }
+  </script>
 </body>
 </html>
