@@ -61,11 +61,12 @@
             <div class="invalid-feedback">Por favor, ingrese su nombre completo.</div>
         </div>
 
-        <!-- Fecha de Nacimiento -->
+         <!-- Fecha de Nacimiento -->
         <div class="mb-3">
             <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
             <input type="date" class="form-control" id="fechaNacimiento" required>
             <div class="invalid-feedback">Por favor, ingrese su fecha de nacimiento.</div>
+            <div id="edadFeedback" class="text-danger"></div> <!-- Aquí se mostrará el mensaje de error -->
         </div>
 
         <!-- Evento -->
@@ -80,8 +81,8 @@
             <div class="invalid-feedback">Por favor, seleccione un evento.</div>
         </div>
 
-          <!-- Costo (bloqueado) -->
-          <div class="mb-3">
+        <!-- Costo (bloqueado) -->
+        <div class="mb-3">
             <label for="costo" class="form-label">Costo</label>
             <input type="number" class="form-control" id="costo" placeholder="$" readonly required>
             <div class="invalid-feedback">Por favor, ingrese el costo.</div>
@@ -96,12 +97,12 @@
         <!-- Total a Pagar -->
         <div class="mb-3">
             <label for="totalPagar" class="form-label">Total a Pagar</label>
-            <input type="number" class="form-control" id="totalPagar" placeholder="$" required>
+            <input type="number" class="form-control" id="totalPagar" placeholder="$" readonly required>
             <div class="invalid-feedback">Por favor, ingrese el total a pagar.</div>
         </div>
 
         <!-- Botón Guardar -->
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-dark mb-5">Guardar</button>
     </form>
 </div>
 
@@ -112,6 +113,8 @@
     const costoInput = document.getElementById('costo');
     const totalPagarInput = document.getElementById('totalPagar');
     const codigoPromocionalInput = document.getElementById('codigoPromocional');
+    const fechaNacimientoInput = document.getElementById('fechaNacimiento');
+    const edadFeedback = document.getElementById('edadFeedback');
 
     let costo = 0;
 
@@ -139,18 +142,51 @@
         actualizarCostos();
     });
 
+    // Evento para validar la edad
+    fechaNacimientoInput.addEventListener('change', function() {
+        validarEdad();
+    });
+
     // Función para actualizar los costos
     function actualizarCostos() {
         let total = costo;
         
-        // Si el código es "DESCUENTO10", aplicar un descuento del 10%
-        if (codigoPromocionalInput.value === "DESCUENTO10") {
+        // Si el código es "Sale10", aplicar un descuento del 10%
+        if (codigoPromocionalInput.value === "Sale10") {
             total = costo * 0.9; // Aplica el 10% de descuento
+        }
+        if (codigoPromocionalInput.value === "Sale11") {
+            total = costo * 0.85; // Aplica el 15% de descuento
+        }
+        if (codigoPromocionalInput.value === "Sale12") {
+            total = costo * 0.75; // Aplica el 25% de descuento
+        }
+        if (codigoPromocionalInput.value === "Sale13") {
+            total = costo * 0.7; // Aplica el 30% de descuento
         }
 
         // Actualizar los campos de costo y total a pagar
         costoInput.value = costo;
         totalPagarInput.value = total.toFixed(2); // Limitar a 2 decimales
+    }
+
+    // Función para validar la edad
+    function validarEdad() {
+        const fechaNacimiento = new Date(fechaNacimientoInput.value);
+        const hoy = new Date();
+        let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+        const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+            edad--;
+        }
+
+        // Si es menor de 15 años, mostrar mensaje de error
+        if (edad < 15) {
+            edadFeedback.textContent = "Lo sentimos, debe tener al menos 15 años para participar.";
+        } else {
+            edadFeedback.textContent = ""; // Limpiar mensaje si la edad es válida
+        }
     }
 
     // Validación del formulario
@@ -170,7 +206,42 @@
             form.classList.add('was-validated');
         }, false);
     })();
-
 </script>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <!-- Información de contacto -->
+        <div class="col-md-4">
+          <h5>Contacto</h5>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-telephone-fill"></i> Tel: 376748684</li>
+            <li><i class="bi bi-envelope-fill"></i> Correo: <a href="mailto:empresa@correo.com" class="text-light">empresa@correo.com</a></li>
+          </ul>
+        </div>
+        
+        <!-- Redes Sociales -->
+        <div class="col-md-4 text-center">
+          <h5>Síguenos</h5>
+          <div>
+            <a href="#" class="text-light me-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-light me-3"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+  
+        <!-- Derechos reservados -->
+        <div class="col-md-4 text-end">
+          <h5>Créditos</h5>
+          <p class="mb-0">&copy; 2024 Empresa. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Bootstrap Icons CDN (necesario para los íconos del footer) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </body>
 </html>
