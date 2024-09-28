@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="https://www.incolmotos-yamaha.com.co/wp-content/themes/yamaha/img/yamaha.svg" alt=""></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Noticias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Eventos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Interés</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+<div class="container mt-5">
+    <h1>Inscripciones</h1>
+    <form id="registrationForm" novalidate>
+        <!-- Tipo Documento -->
+        <div class="mb-3">
+            <label for="tipoDocumento" class="form-label">Tipo de Documento</label>
+            <select class="form-select" id="tipoDocumento" required>
+                <option value="">Seleccione...</option>
+                <option value="Cc">Cedula de Ciudadania</option>
+                <option value="Tarjeta">Tarjeta de identidad</option>
+            </select>
+            <div class="invalid-feedback">Por favor, seleccione un tipo de documento.</div>
+        </div>
+
+        <!-- Documento -->
+        <div class="mb-3">
+            <label for="documento" class="form-label">Documento</label>
+            <input type="text" class="form-control" id="documento" placeholder="Número de documento" required>
+            <div class="invalid-feedback">Por favor, ingrese un número de documento válido.</div>
+        </div>
+
+        <!-- Nombre -->
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre completo" required>
+            <div class="invalid-feedback">Por favor, ingrese su nombre completo.</div>
+        </div>
+
+        <!-- Fecha de Nacimiento -->
+        <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechaNacimiento" required>
+            <div class="invalid-feedback">Por favor, ingrese su fecha de nacimiento.</div>
+        </div>
+
+        <!-- Evento -->
+        <div class="mb-3">
+            <label for="evento" class="form-label">Evento</label>
+            <select class="form-select" id="evento" required>
+                <option value="">Seleccione el evento...</option>
+                <option value="rv">Conferencia sobre Realidad Virtual</option>
+                <option value="ia">Conferencia sobre IA</option>
+                <option value="cs">Conferencia sobre Ciberseguridad</option>
+            </select>
+            <div class="invalid-feedback">Por favor, seleccione un evento.</div>
+        </div>
+
+          <!-- Costo (bloqueado) -->
+          <div class="mb-3">
+            <label for="costo" class="form-label">Costo</label>
+            <input type="number" class="form-control" id="costo" placeholder="$" readonly required>
+            <div class="invalid-feedback">Por favor, ingrese el costo.</div>
+        </div>
+
+        <!-- Código Promocional -->
+        <div class="mb-3">
+            <label for="codigoPromocional" class="form-label">Código Promocional</label>
+            <input type="text" class="form-control" id="codigoPromocional" placeholder="Código promocional">
+        </div>
+
+        <!-- Total a Pagar -->
+        <div class="mb-3">
+            <label for="totalPagar" class="form-label">Total a Pagar</label>
+            <input type="number" class="form-control" id="totalPagar" placeholder="$" required>
+            <div class="invalid-feedback">Por favor, ingrese el total a pagar.</div>
+        </div>
+
+        <!-- Botón Guardar -->
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Variables de los campos
+    const eventoSelect = document.getElementById('evento');
+    const costoInput = document.getElementById('costo');
+    const totalPagarInput = document.getElementById('totalPagar');
+    const codigoPromocionalInput = document.getElementById('codigoPromocional');
+
+    let costo = 0;
+
+    // Asignar costos según el evento seleccionado
+    eventoSelect.addEventListener('change', function() {
+        switch (eventoSelect.value) {
+            case 'rv':
+                costo = 1000000;
+                break;
+            case 'ia':
+                costo = 1500000;
+                break;
+            case 'cs':
+                costo = 1200000;
+                break;
+            default:
+                costo = 0;
+        }
+        // Rellenar el campo de costo y total a pagar
+        actualizarCostos();
+    });
+
+    // Evento para aplicar descuento cuando se ingrese el código promocional
+    codigoPromocionalInput.addEventListener('input', function() {
+        actualizarCostos();
+    });
+
+    // Función para actualizar los costos
+    function actualizarCostos() {
+        let total = costo;
+        
+        // Si el código es "DESCUENTO10", aplicar un descuento del 10%
+        if (codigoPromocionalInput.value === "DESCUENTO10") {
+            total = costo * 0.9; // Aplica el 10% de descuento
+        }
+
+        // Actualizar los campos de costo y total a pagar
+        costoInput.value = costo;
+        totalPagarInput.value = total.toFixed(2); // Limitar a 2 decimales
+    }
+
+    // Validación del formulario
+    (function () {
+        'use strict'
+
+        // Obtener el formulario
+        var form = document.getElementById('registrationForm');
+
+        // Evento submit para validar
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    })();
+
+</script>
+</body>
+</html>
