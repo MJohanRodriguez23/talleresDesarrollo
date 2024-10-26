@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes Web - Taller</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header, .footer {
+            background-color: #f8f9fa;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        .search-bar input {
+            width: 100%;
+            border-radius: 20px;
+        }
+        .product-card {
+            border: 1px solid #000;
+            padding: 15px;
+            text-align: center;
+        }
+        .footer-text {
+            text-align: center;
+            width: 100%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="header d-flex justify-content-between align-items-center">
+        <div id="fecha-container"></div>
+        <div>Bienvenidos son las: <span id="hora-container"></span></div>
+        <link-chatgpt></link-chatgpt>
+    </div>
+
+    <div class="search-bar mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Buscar con ChatGPT">
+        <buscarElprofebarrientos></buscarElprofebarrientos>
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="product-card">
+                <img src="https://iwatamotos-yamaha.com/wp-content/uploads/2023/08/mt03_azul-1-2.png" alt="Producto 1" class="product-image" style="width: 250px; height: 230px;">
+                <p>Nombre: Yamaha MT03 2025</p>
+                <p>Precio: $29'500.000</p>
+                <boton-carrito></boton-carrito>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="product-card">
+                <img src="https://www.santodomingomotors.com.do/wp-content/uploads/2023/10/FOTO-DEL-PRODUCTO-23xsr700-black-S03-removebg-preview.png" alt="Producto 2" class="product-image" style="width: 350px; height: 230px;">
+                <p>Nombre: Yamaha XSR 700 2025</p>
+                <p>Precio: $79'500.000</p>
+                <boton-carrito></boton-carrito>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="product-card">
+                <img src="https://www.incolmotos-yamaha.com.co/wp-content/uploads/2023/04/mt15_carrusel.png" alt="Producto 3" class="product-image" style="width: 280px; height: 230px;">
+                <p>Nombre: Yamaha MT 15 150 2025</p>
+                <p>Precio: $15'500.000</p>
+                <boton-carrito></boton-carrito>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer mt-3" style="background-color: green;">
+        <div class="footer-text" style="color: white;">
+            Derechos reservados El profe barrientos
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("fecha-container").innerText = new Date().toLocaleDateString();
+    setInterval(() => {
+        document.getElementById("hora-container").innerText = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }, 1000);
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    class LinkChatGPT extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            let shadowRoot = this.attachShadow({ mode: 'open' });
+            shadowRoot.innerHTML = `
+                <style>
+                    a {
+                        color: #007bff;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                </style>
+                <a href="https://chat.openai.com" target="_blank">Ir a ChatGPT</a>
+            `;
+        }
+    }
+    customElements.define("link-chatgpt", LinkChatGPT);
+
+    class buscarElprofebarrientos extends HTMLElement {
+  constructor() {
+    // Always call super first in constructor
+    super();
+  }
+  connectedCallback() {
+    // Create a shadow root
+    const shadowRoot = this.attachShadow({ mode: "open" });
+    // Create caja de texto
+    const buscarcaja = document.createElement("input");
+    buscarcaja.type = 'text';
+    buscarcaja.name = 'buscar';
+    buscarcaja.id = 'buscar';
+
+    buscarcaja.placeholder = 'Burcar con ChatGPT';
+    buscarcaja.setAttribute("class", "buscarcaja buscarcaja:focus");
+    const style = document.createElement("style");
+    style.textContent = `
+      .buscarcaja {       
+       
+      width: 1800px;           /* Ancho de la caja de texto */
+  padding: 10px;         /* Espaciado interno */
+  border: 2px solid #007bff; /* Color y grosor del borde */
+  border-radius: 20px;   /* Esquinas redondeadas */
+  outline: none;         /* Quitar el contorno al hacer clic */
+  transition: border-color 0.3s; /* Transición suave para el color del borde */
+
+      }
+        .buscarcaja:focus {
+  border-color: #CD5C5C;  /* Color del borde al enfocar */
+}
+     
+    `;
+    // Attach the created elements to the shadow dom
+    shadow.appendChild(style);   
+    shadow.appendChild(buscarcaja);
+    
+  }
+}
+
+
+    class BotonCarrito extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            let shadowRoot = this.attachShadow({ mode: 'open' });
+            shadowRoot.innerHTML = `
+                <style>
+                    button {
+                        padding: 10px 20px;
+                        font-size: 1em;
+                        background-color: #28a745;
+                        color: white;
+                        border: none;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                    button:hover {
+                        background-color: #218838;
+                    }
+                </style>
+                <button onclick="window.open('https://www.tienda-yamaha.com.co/', '_blank')">Ir a Yamaha</button>
+            `;
+        }
+    }
+    customElements.define("boton-carrito", BotonCarrito);
+</script>
+
+</body>
+</html>
